@@ -1,6 +1,12 @@
-.header {
+.headerContainer {
 	border-top-left-radius: 0.2rem;
 	border-top-right-radius: 0.2rem;
 	background-color: white;
 	color: rgb(73, 73, 73);
+}
+Link:hover {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
 }

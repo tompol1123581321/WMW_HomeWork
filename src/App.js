@@ -2,29 +2,38 @@ import Header from "./components/partsOfScreen/header"
 import PersonalInfo from "./components/mainScreens/personalInfoPage"
 import SkillsPage from "./components/mainScreens/skillsPage"
 import {
+	useLocation,
 	Route,
-	BrowserRouter as Router,
 	Switch,
 } from "react-router-dom"
 import "./style/style.scss"
 import { Container } from "@material-ui/core"
+import { AnimatePresence } from "framer-motion"
 
 function App() {
+	const location = useLocation()
 	return (
 		<div className="wholePage">
 			<Container maxWidth="md">
 				<div className="wholeApp">
-					<Router>
-						<Header />
-						<Switch>
-							<Route path="/" exact>
-								<PersonalInfo />
-							</Route>
-							<Route path="/skills">
-								<SkillsPage />
-							</Route>
+					<Header />
+					<AnimatePresence exitBeforeEnter>
+						<Switch
+							location={location}
+							key={location.pathname}
+						>
+							<Route
+								path="/"
+								component={PersonalInfo}
+								exact
+							/>
+
+							<Route
+								path="/skills"
+								component={SkillsPage}
+							/>
 						</Switch>
-					</Router>
+					</AnimatePresence>
 				</div>
 			</Container>
 		</div>

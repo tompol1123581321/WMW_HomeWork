@@ -1,3 +1,4 @@
+@import "~bootstrap/scss/bootstrap";
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -10,12 +11,37 @@
 	justify-content: center;
 	align-items: center;
 	.wholeApp {
+		max-width: 40rem;
+		margin: auto;
 		border-radius: 0.4rem;
 		background-color: white;
 		border: solid black 0.15rem;
+		text-align: center;
+		overflow: hidden;
 	}
 }
 
 .page-container {
-	min-height: 30rem;
+	margin: auto;
+}
+
+.buttonContainer {
+	display: flex;
+	justify-content: flex-end;
+	margin: 2.2rem;
+}
+.addingSkills {
+	display: flex;
+	max-width: 17rem;
+	margin: auto;
+	margin-top: 6%;
+
+	Button {
+		i {
+			font-size: 2rem;
+		}
+	}
+}
+.skillCard {
+	width: 20rem;
 }
