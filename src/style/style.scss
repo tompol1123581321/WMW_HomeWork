@@ -30,18 +30,9 @@
 	justify-content: flex-end;
 	margin: 2.2rem;
 }
-.addingSkills {
-	display: flex;
-	max-width: 17rem;
-	margin: auto;
-	margin-top: 6%;
 
-	Button {
-		i {
-			font-size: 2rem;
-		}
+.addButton {
+	i {
+		font-size: 1.6rem;
 	}
-}
-.skillCard {
-	width: 20rem;
 }

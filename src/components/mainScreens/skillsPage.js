@@ -1,11 +1,19 @@
 import { Button, TextField } from "@material-ui/core"
 import { motion } from "framer-motion"
-import React from "react"
-import { Card, Col, Container, Row } from "react-bootstrap"
+import React, { useState } from "react"
+import { Col, Container, Form, Row } from "react-bootstrap"
 import { pageTransitionSkills } from "../../transitions"
 import "../../style/style.scss"
 
 const SkillsPage = () => {
+	const [skill, setSkill] = useState()
+	const [skills, setSkills] = useState([])
+
+	const submitHandler = (e) => {
+		e.preventDefault()
+		setSkills([...skills, skill])
+		setSkill("")
+	}
 	return (
 		<motion.div
 			className="page-container"
@@ -16,26 +24,33 @@ const SkillsPage = () => {
 		>
 			<Container>
 				<Row>
-					<div className="addingSkills">
+					<Form
+						onSubmit={submitHandler}
+						style={{ margin: "1rem" }}
+					>
 						<TextField
-							id="outlined-basic"
 							label="Skills"
 							variant="outlined"
+							color="primary"
+							size="small"
+							value={skill}
+							onChange={(e) => {
+								setSkill(e.target.value)
+							}}
 						/>
-						<Button variant="contained" color="secondary">
+						<Button
+							type="submit"
+							className="addButton"
+							variant="contained"
+							color="secondary"
+						>
 							<i class="far fa-plus-square"></i>
 						</Button>
-					</div>
+					</Form>
 				</Row>
+
 				<Row style={{ minHeight: "15rem" }}>
-					<Col>
-						<Card>
-							<Card.Body>Skill number 1</Card.Body>
-						</Card>
-						<Card>
-							<Card.Body>Skill number 1</Card.Body>
-						</Card>
-					</Col>
+					<Col>{skills}</Col>
 				</Row>
 			</Container>
 		</motion.div>
