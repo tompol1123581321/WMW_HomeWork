@@ -1,18 +1,25 @@
 import { Button, TextField } from "@material-ui/core"
 import { motion } from "framer-motion"
 import React, { useState } from "react"
-import { Col, Container, Form, Row } from "react-bootstrap"
+import {
+	Col,
+	Container,
+	Form,
+	ListGroup,
+	Row,
+} from "react-bootstrap"
 import { pageTransitionSkills } from "../../transitions"
 import "../../style/style.scss"
+import SkillCard from "../partsOfScreen/skillCard"
 
 const SkillsPage = () => {
-	const [skill, setSkill] = useState()
+	const [skill, setSkill] = useState({})
 	const [skills, setSkills] = useState([])
 
 	const submitHandler = (e) => {
 		e.preventDefault()
 		setSkills([...skills, skill])
-		setSkill("")
+		setSkill({})
 	}
 	return (
 		<motion.div
@@ -29,13 +36,16 @@ const SkillsPage = () => {
 						style={{ margin: "1rem" }}
 					>
 						<TextField
-							label="Skills"
+							label="Add new skill"
 							variant="outlined"
 							color="primary"
 							size="small"
-							value={skill}
+							value={skill.text ? skill.text : ""}
 							onChange={(e) => {
-								setSkill(e.target.value)
+								setSkill({
+									text: e.target.value,
+									id: Math.random() * 5000,
+								})
 							}}
 						/>
 						<Button
@@ -44,15 +54,34 @@ const SkillsPage = () => {
 							variant="contained"
 							color="secondary"
 						>
-							<i class="far fa-plus-square"></i>
+							<i className="far fa-plus-square"></i>
 						</Button>
 					</Form>
 				</Row>
-
-				<Row style={{ minHeight: "15rem" }}>
-					<Col>{skills}</Col>
-				</Row>
+				<div style={{ minHeight: "8.1rem" }}>
+					{skills.map((s) => (
+						<ListGroup
+							key={s + Math.random()}
+							style={{
+								maxWidth: "20rem",
+							}}
+						>
+							<SkillCard
+								s={s}
+								skills={skills}
+								setSkills={setSkills}
+							/>
+						</ListGroup>
+					))}
+				</div>
 			</Container>
+			<Row>
+				<Col className="buttonContainer">
+					<Button variant="contained" color="secondary">
+						SAVE
+					</Button>
+				</Col>
+			</Row>
 		</motion.div>
 	)
 }

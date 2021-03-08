@@ -3,6 +3,7 @@ import AppBar from "@material-ui/core/AppBar"
 import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
 import { Link } from "react-router-dom"
+import "../../style/header.scss"
 
 const Header = () => {
 	const [value, setValue] = useState(0)
@@ -13,14 +14,16 @@ const Header = () => {
 
 	return (
 		<div>
-			<AppBar position="static" color="white">
+			<AppBar position="static" color="transparent">
 				<Tabs value={value} onChange={handleChange}>
 					<Tab
+						className="tab"
 						label="PERSONAL INFO"
 						component={Link}
 						to="/"
 					/>
 					<Tab
+						className="tab"
 						label="SKILLS"
 						component={Link}
 						to="/skills"
