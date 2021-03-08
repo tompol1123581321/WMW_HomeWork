@@ -9,6 +9,7 @@ const SkillCard = ({ s, skills, setSkills }) => {
 		)
 		setSkills(newSkills)
 	}
+
 	return (
 		<ListGroupItem
 			style={{
@@ -20,7 +21,7 @@ const SkillCard = ({ s, skills, setSkills }) => {
 				padding: "0",
 			}}
 		>
-			<b style={{ paddingLeft: "0.4rem" }}>{s.text}</b>
+			<b>{s.text}</b>
 			<Button onClick={deleteSkill} variant="contained">
 				<i className="fas fa-trash-alt"></i>
 			</Button>
