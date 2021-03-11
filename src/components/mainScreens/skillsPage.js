@@ -24,10 +24,12 @@ const SkillsPage = () => {
 	const saveAndShow = () => {
 		if (skills.length !== 0) {
 			console.log(skills.map((skill) => skill.text))
+			console.log(skills)
 		} else {
 			alert("your skill-list is empty!")
 		}
 	}
+
 	return (
 		<motion.div
 			className="page-container"
@@ -66,22 +68,21 @@ const SkillsPage = () => {
 					</Form>
 				</Row>
 				<div style={{ minHeight: "8.1rem" }}>
-					{skills.map((s) => {
-						return (
-							<ListGroup
+					<ListGroup
+						style={{
+							maxWidth: "20rem",
+						}}
+					>
+						{skills.map((s) => (
+							<SkillCard
 								key={s + Math.random()}
-								style={{
-									maxWidth: "20rem",
-								}}
-							>
-								<SkillCard
-									s={s}
-									skills={skills}
-									setSkills={setSkills}
-								/>
-							</ListGroup>
-						)
-					})}
+								s={s}
+								skills={skills}
+								setSkills={setSkills}
+								setSkill={setSkill}
+							/>
+						))}
+					</ListGroup>
 				</div>
 			</Container>
 			<Row>
